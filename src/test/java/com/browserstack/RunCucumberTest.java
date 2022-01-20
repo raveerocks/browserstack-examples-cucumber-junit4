@@ -1,0 +1,24 @@
+package com.browserstack;
+
+import com.browserstack.junit.WebDriverOptions;
+import com.browserstack.junit.WebDriverRunner;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+
+@RunWith(WebDriverRunner.class)
+@WebDriverOptions(
+        thread = 5,
+        rerun = true,
+        cucumberOptions = @CucumberOptions(
+        features = "src/test/resources/features/com/browserstack",
+        name = "End to End Scenario",
+        plugin = {"pretty",
+                "com.browserstack.report.CustomReportListener:custom/reports",
+                "com.browserstack.rerun.RerunExecutionManager:2"},
+        monochrome = true
+        )
+)
+public class RunCucumberTest {
+
+}
